@@ -1,0 +1,11 @@
+<h1>YouTube Downloader</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">List Formats</button>
+</form>
+<ul>
+    {% for format in formats %}
+    <li>{{ format.id }} - {{ format.resolution }} - {{ format.size }} - {{ format.extension }}</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download TikTok Profile Videos</title>
+    <!-- Tailwind CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Download TikTok Profile Videos</h1>
+
+        <!-- Form -->
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+
+            <!-- Input Field for Username with Success Styling -->
+            <div class="mb-6">
+                <label for="username" class="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
+                    Enter TikTok Username
+                </label>
+                <input type="text" id="username" name="username"
+                    class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500"
+                    placeholder="Username123">
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                    <span class="font-medium">Tip:</span> Enter the username to download all videos from the profile.
+                </p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                Download Videos
+            </button>
+        </form>
+
+        <!-- Message Display -->
+        {% if message %}
+        <p class="mt-6 text-sm text-green-600 dark:text-green-500 text-center">
+            <span class="font-medium">Success!</span> {{ message }}
+        </p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
