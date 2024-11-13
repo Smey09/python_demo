@@ -2,13 +2,15 @@
 import download_a_video
 import download_profile_videos
 import youtube_downloader
+import card_scaner
 
 def main():
-    print("Video Downloader")
+    print("Video and Card Scanner")
     print("1. Download a single TikTok video by URL")
     print("2. Download all TikTok videos by user profile")
     print("3. YouTube downloader")
-    choice = input("Enter your choice (1, 2, 3): ")
+    print("4. Scan a Khmer Card for details")
+    choice = input("Enter your choice (1, 2, 3, 4): ")
 
     if choice == "1":
         tiktok_url = input("Enter the TikTok video URL: ")
@@ -21,13 +23,14 @@ def main():
         formats = youtube_downloader.list_video_formats(youtube_url)
         
         if formats:
-            # Prompt the user to select a format ID after listing formats
             chosen_format_id = input("\nEnter the format ID to download: ")
             youtube_downloader.download_youtube_video(youtube_url, chosen_format_id)
         else:
             print("No downloadable formats found for this video.")
+    elif choice == "4":
+        card_scaner.scan_card()  # Call scan_card function if choice is 4
     else:
-        print("Invalid choice. Please enter 1, 2, or 3.")
+        print("Invalid choice. Please enter 1, 2, 3, or 4.")
 
 if __name__ == "__main__":
     main()
